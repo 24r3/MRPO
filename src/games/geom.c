@@ -4,8 +4,7 @@
 #include <time.h>
 #include "../headers/nok.h"
 
-void Geom(char question[], char answer[])
-{
+void Geom(char question[], char answer[]) {
     unsigned int ctime = time(NULL);
     int b = rand_r(&ctime) % (5) + 2;
     int count = rand_r(&ctime) % (7-5) + 5;
@@ -30,4 +29,8 @@ void Geom(char question[], char answer[])
         prev = cur;
     }
     question[qP] = 0;
+}
+
+void GeomMeet(void) {
+    printf("What number is missing in the progression?\n");
 }

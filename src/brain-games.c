@@ -2,6 +2,16 @@
 #include "headers/engine.h"
 
 int main(void) {
-    Play();
+    Init();
+    GetName();
+    char gameMode;
+    while (1) {
+        gameMode = GetGameMode('q');
+        if (gameMode == 'q') {
+            GameOver();
+            break;
+        }
+        PlayGame(gameMode);
+    }
     return 0;
 }

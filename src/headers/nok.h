@@ -5,5 +5,6 @@
 void itoa(int n, char buf[]);
 void InitNOK(void);
 void NOK(char question[], char answer[]);
+void NOKMeet(void);
 
 #endif  // SRC_HEADERS_NOK_H_

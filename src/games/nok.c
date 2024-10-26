@@ -102,7 +102,7 @@ void NOK(char question[], char answer[]) {
     int i, j, n;
     int qP = 0;
     unitedMults[0] = 0;
-    count = rand_r(&ctime) % (MAX_NOK_COUNT + 1 - MIN_NOK_COUNT) + MIN_NOK_COUNT;
+    count = rand_r(&ctime) % (MAX_NOK_COUNT+1 - MIN_NOK_COUNT) + MIN_NOK_COUNT;
     for (i = 0; i < count; ++i) {
         n = rand_r(&ctime) % (MAX_NOK_NUMBER - 2) + 2;
         decompose(n, mults);
@@ -118,4 +118,8 @@ void NOK(char question[], char answer[]) {
     for (i = 0; unitedMults[i]; ++i)
         result *= unitedMults[i];
     itoa(result, answer);
+}
+
+void NOKMeet(void) {
+    printf("Find the smallest common multiple of given numbers.\n");
 }

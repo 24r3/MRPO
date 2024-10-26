@@ -7,17 +7,16 @@
 
 char name[32];
 
-void SetName(void) {
+char* GetName(void) {
     printf("Welcome to the Brain Games! May I have your name? ");
-
     fgets(name, sizeof(name), stdin);
     name[strlen(name) - 1] = 0;
     printf("Hello, %s!\n", name);
+    return name;
 }
 
 char ask(char *question, char *correctAnswer) {
     printf("%s\nYour answer: ", question);
-
     char response[30];
     fgets(response, sizeof(response), stdin);
     response[strlen(response) - 1] = 0;
@@ -31,37 +30,43 @@ char ask(char *question, char *correctAnswer) {
     }
 }
 
-void Play(void) {
-    SetName();
-    InitNOK();
-    int i, response;
+char GetGameMode(char stopCode) {
     char input[32];
-    char question[512], answer[32];
-    while (1) {
-        while ((input[0] != '1') && (input[0] != '2') && (input[0] != 'q')) {
-            printf("\nWhat should we play?\n1) NOK\n2) Progression\n>>>");
-            fgets(input, sizeof(input), stdin);
-        }
-        if (input[0] == 'q') {
-            printf("Bye!\n");
-            return;
-        }
-        if (input[0] == '1')
-            printf("Find the smallest common multiple of given numbers.\n");
-        else
-            printf("What number is missing in the progression?\n");
-        for (i = 0; i < 3; ++i) {
-            if (input[0] == '1')
-                NOK(question, answer);
-            else
-                Geom(question, answer);
-            response = ask(question, answer);
-            if (response == 20)
-                break;
-        }
-        if (response != 20) {
-            printf("Congratulations, %s!\n", name);
-        }
-        input[0] = 0;
+    input[0] = 0;
+    while ((input[0] != '1') && (input[0] != '2') 
+            && (input[0] != stopCode)) {
+        printf("\nWhat should we play?\n1) NOK\n2) Progression\n>>>");
+        fgets(input, sizeof(input), stdin);
     }
+    return input[0];
+}
+
+int PlayGame(char gamemode) {
+    if (gamemode == '1')
+        NOKMeet();
+    else
+        GeomMeet();
+    int i, response; 
+    char question[512], answer[32];
+    for (i = 0; i < 3; ++i) {
+        if (gamemode == '1')
+            NOK(question, answer);
+        else
+            Geom(question, answer);
+        response = ask(question, answer);
+        if (response == 20)
+            break;
+    }
+    if (response != 20) {
+        printf("Congratulations, %s!\n", name);
+    }
+    return response;
+}
+
+void GameOver(void) {
+    printf("Bye!\n");
+}
+
+void Init(void) {
+    InitNOK();
 }
