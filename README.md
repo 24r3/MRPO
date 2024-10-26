@@ -1,5 +1,5 @@
 <a href="https://codeclimate.com/github/24r3/MRPO/maintainability"><img src="https://api.codeclimate.com/v1/badges/825dfd0d5e83811a871b/maintainability" /></a><br>
-Asciinema: https://asciinema.org/a/yx6uT4PweOuy1JJqS9JXqjFTs <br>
+Asciinema: https://asciinema.org/a/2Vi23cTXbMJ2sX9biQi1YtSHQ <br>
 Реализовать можно на любом языке программирования.
 
 1. Создание приветствия. Поприветствуйте пользователя в игре. Спросите у пользователя его имя и поприветствуйте его по имени: Welcome to the Brain Games! May I have your name? John Hello, John!
